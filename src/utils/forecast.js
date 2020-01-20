@@ -4,7 +4,7 @@ const forecast = (latitude, longitude, callback) => {
     const url = 'https://api.darksky.net/forecast/06f871f5622c4cfa5a986cf33be6fb44/' + latitude + ',' + longitude + '?units=si'
 
     // the shorthand method can access deeper, nested things using the method below
-    request({ url: url, json: true}, (error, { body: {currently, hourly}, error:error2 } = {}) => {
+    request({ url: url, json: true}, (error, { body: {timezone, currently, hourly}, error:error2 } = {}) => {
         //const body = response.body
 
         if (error) {
@@ -16,7 +16,8 @@ const forecast = (latitude, longitude, callback) => {
                 summary: currently.summary,
                 temperature: currently.temperature,
                 precipitationProb: currently.precipProbability,
-                hourUpdate: hourly.summary
+                hourUpdate: hourly.summary,
+                timezone
             })
         }
     })

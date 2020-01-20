@@ -86,7 +86,8 @@ app.get('/weather', (req, res) => {
                     longitude: longitude,
                     forecast: forecastData,
                     temp: forecastData.temperature,
-                    hourDescription: forecastData.hourUpdate
+                    hourDescription: forecastData.hourUpdate,
+                    timezone: forecastData.timezone
                 })
         
             })

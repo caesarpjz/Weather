@@ -19,6 +19,7 @@ console.log('Client side java script file')
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
+const messageZero = document.querySelector('#message-0')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
 
@@ -28,7 +29,8 @@ weatherForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
     const location = search.value
-    messageOne.textContent = 'Loading......'
+    messageZero.textContent = 'Finding your desired location...'
+    messageOne.textContent = ''
     messageTwo.textContent = '' // to remove previous results
     fetch('/weather?address=' + location)
     .then((response) => {
@@ -41,8 +43,9 @@ weatherForm.addEventListener('submit', (event) => {
                 console.log(data.forecast.summary)
                 console.log(data.hourDescription)
                 console.log(data.forecast.temperature)
-                messageOne.textContent = data.forecast.summary
-                messageTwo.textContent = data.forecast.temperature
+                messageZero.textContent = "Location: " + data.forecast.timezone
+                messageOne.textContent = "Summary: " + data.forecast.summary
+                messageTwo.textContent = "Temperature: " + data.forecast.temperature
             }
             
         })
