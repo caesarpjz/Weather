@@ -40,6 +40,7 @@ weatherForm.addEventListener('submit', (event) => {
                 console.log(data)
                 console.log(data.forecast.summary)
                 console.log(data.hourDescription)
+                console.log(data.forecast.temperature)
                 messageOne.textContent = data.forecast.summary
                 messageTwo.textContent = data.forecast.temperature
             }
