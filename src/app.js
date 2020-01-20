@@ -8,6 +8,7 @@ const geocode = require('./utils/geocode')
 // console.log(path.join(__dirname, '../public')), path.join joins diff paths tgt, so that you can access diff directories that you want.
 
 const app = express()
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirPath = path.join(__dirname, '../public')
@@ -126,8 +127,8 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => { // starts up the server and has it listen on a specific port
-    console.log('Server is up on port 3000.')
+app.listen(port, () => { // starts up the server and has it listen on a specific port
+    console.log('Server is up on port ' + port)
 }) 
 
 
